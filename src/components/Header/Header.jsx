@@ -1,9 +1,9 @@
 import { AppBar, Box, Button, Toolbar, Typography } from '@mui/material'
 import React from 'react'
 
-function DefaultLayout() {
-    return (
-        <>
+function Header() {
+  return (
+    <>
             <Box sx={{ flexGrow: 1 }}>
                 <AppBar position="static">
                     <Toolbar>
@@ -15,7 +15,7 @@ function DefaultLayout() {
                 </AppBar>
             </Box>
         </>
-    )
+  )
 }
 
-export default DefaultLayout;
+export default Header;

@@ -1,10 +1,10 @@
 import React from 'react'
-import DefaultLayout from '../../components/DefaultLayout/DefaultLayout';
+import Header from '../../components/Header/Header.jsx';
 
 function Home() {
     return (
         <div>
-            <DefaultLayout />
+            <Header />
             <h1>Home</h1>
         </div>
     )
