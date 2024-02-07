@@ -9,6 +9,7 @@ import axios from 'axios';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 axios.defaults.baseURL = "http://localhost:5000";
+
 root.render(
   <BrowserRouter>
     <Provider store={store}>

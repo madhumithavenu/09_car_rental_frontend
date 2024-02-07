@@ -9,7 +9,7 @@ function Home() {
 
     useEffect(() => {
         dispatch(getAllCars());
-    }, []);
+    }, [dispatch]);
 
     return (
         <div>

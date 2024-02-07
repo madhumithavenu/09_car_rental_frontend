@@ -3,13 +3,13 @@ import { alertActions } from "./alert_slice.js";
 import { carActions } from "./car_slice.js";
 
 
-export async function getAllCars() {
+export function getAllCars() {
     return async (dispatch) => {
         dispatch(alertActions.isLoading(true));
-
         try {
             const res = await axios.get('/api/cars/getallcars');
-            dispatch(carActions.getAllCars(res.data));
+            const data = await res.data;
+            dispatch(carActions.getAllCars(data.cars));
             dispatch(alertActions.isLoading(false));
         } catch (err) {
             console.log(err);

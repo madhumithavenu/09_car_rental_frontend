@@ -6,7 +6,7 @@ const alertSlice = createSlice({
     initialState: { loading: false },
     reducers:{
         isLoading(draft, action){
-            draft.loading = action.payload.loading;
+            draft.loading = action.payload;
         }
     }
 });
