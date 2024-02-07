@@ -4,6 +4,9 @@ const carSlice = createSlice({
     name: 'car',
     initialState: { cars: [] },
     reducers: {
+        getAllCars(draft, action) {
+            draft.cars = action.payload;
+        }
     }
 });
 

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { alertActions } from "./alert_slice.js";
+import { carActions } from "./car_slice.js";
 
 
 export async function getAllCars() {
@@ -7,8 +8,8 @@ export async function getAllCars() {
         dispatch(alertActions.isLoading(true));
 
         try {
-            const response = await axios.get('/api/cars/getallcars');
-            dispatch();
+            const res = await axios.get('/api/cars/getallcars');
+            dispatch(carActions.getAllCars(res.data));
             dispatch(alertActions.isLoading(false));
         } catch (err) {
             console.log(err);
