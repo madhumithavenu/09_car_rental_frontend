@@ -1,25 +1,28 @@
-import React, { useEffect } from 'react'
-import Header from '../../components/Header/Header.jsx';
+import React, { useEffect, useState } from 'react'
+// import Header from '../../components/Header/Header.jsx';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllCars } from '../../store/car_actions.js';
-import { Box, Button, Card, CardActions, CardContent, Typography } from '@mui/material';
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
+import { carActions } from '../../store/car_slice.js';
+import { Box } from '@mui/material';
 import { ExpandMore } from '@mui/icons-material';
-
+import { Button, Card, CardActions, CardContent, Typography } from '@mui/material';
 
 
 function Home() {
-    const cars = useSelector((state) => state.car.cars);
-    const dispatch = useDispatch();
+  const cars = useSelector((state) => state.car.cars);
+  const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(getAllCars());
-    }, [dispatch]);
+  console.log(cars);
+  useEffect(() => {
+    dispatch(getAllCars())
+  }, [dispatch]);
 
-    return (
-        <>
-            {cars.map(car => {
+
+  return (
+    <>
+      {cars.map(car => {
         return <div >
           <Card
             sx={{
@@ -53,11 +56,12 @@ function Home() {
               </ExpandMore>
 
             </CardActions>
-            </Card>
-            </div>
-            })}
-        </>
-    )
+          </Card>
+        </div>
+      })
+    }
+    </>
+  )
 }
 
 export default Home;
