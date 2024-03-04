@@ -9,7 +9,7 @@ export function getAllCars() {
         try {
             const res = await axios.get('/api/cars/getallcars');
             const data = await res.data;
-            dispatch(carActions.getAllCars(data.cars));
+            dispatch(carActions.getAllCars(data));
             dispatch(alertActions.isLoading(false));
         } catch (err) {
             console.log(err);
