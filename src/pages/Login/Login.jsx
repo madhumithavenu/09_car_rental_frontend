@@ -1,6 +1,10 @@
 import React from 'react'
-import { Box,TextField, Typography } from '@mui/material';
-
+import { Box, Button, FormControl, FormHelperText, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
+import { useState, useReducer } from 'react';
+import LoginOutlinedIcon from '@mui/icons-material/LoginOutlined';
+import HowToRegOutlinedIcon from '@mui/icons-material/HowToRegOutlined';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
   return (
@@ -67,6 +71,26 @@ function Login() {
             error={errorState.password}
             helperText={errorState.password ? errPasswordMessage : ' '}
           />
+          {props.isSignUp &&
+            <FormControl id="profile" margin='normal' fullWidth error={errorState.profile}>
+              <InputLabel>I am an</InputLabel>
+              <Select
+                name="profile"
+                id="profile-select"
+                labelId="profile"
+                label="I am an"
+                onChange={handleChange}
+                value={inputs.profile}
+              >
+                <MenuItem value={"admin"}>Admin</MenuItem>
+                <MenuItem value={"owner"}>Owner</MenuItem>
+                <MenuItem value={"customer"}>Customer</MenuItem>
+              </Select>
+              <FormHelperText>
+                {'Select a valid Profile'}
+              </FormHelperText>
+            </FormControl>
+          }
         </Box>
       </form>
 
