@@ -1,10 +1,7 @@
 import React from 'react'
 import { Box, Button, FormControl, FormHelperText, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
-import { useState, useReducer } from 'react';
 import LoginOutlinedIcon from '@mui/icons-material/LoginOutlined';
 import HowToRegOutlinedIcon from '@mui/icons-material/HowToRegOutlined';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 
 function Login() {
   return (
@@ -91,6 +88,24 @@ function Login() {
               </FormHelperText>
             </FormControl>
           }
+
+          <Button
+            endIcon={ <HowToRegOutlinedIcon />}
+            sx={{ marginTop: 3, borderRadius: 3 }}
+            variant='contained'
+            color='warning'
+            type='submit'
+          >
+            {props.isSignUp ? 'Register' : 'Login'}
+          </Button>
+
+          <Button
+            endIcon={props.isSignUp ? <LoginOutlinedIcon /> : <HowToRegOutlinedIcon />}
+            sx={{ marginTop: 3, borderRadius: 3, fontSize: 'large', textTransform: "none" }}
+            onClick={resetState}
+          >
+            Login
+          </Button>
         </Box>
       </form>
 
