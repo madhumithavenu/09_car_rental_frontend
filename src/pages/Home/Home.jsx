@@ -43,7 +43,7 @@ function Home() {
                 <Typography>One hour Rent Price : {car.rentPerHour}</Typography>
               </Typography>
             
-            <Accordion>
+            {/* <Accordion>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
         >
@@ -51,8 +51,8 @@ function Home() {
         <AccordionDetails>
           <Button>Book Now</Button>
         </AccordionDetails>
-      </Accordion>
-      {/* <Button>Book Now</Button> */}
+      </Accordion> */}
+      <Button>Book Now</Button>
       </CardContent>
           </Card>
         </div>
