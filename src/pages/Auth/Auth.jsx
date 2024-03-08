@@ -4,8 +4,10 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import LoginOutlinedIcon from '@mui/icons-material/LoginOutlined';
 import HowToRegOutlinedIcon from '@mui/icons-material/HowToRegOutlined';
+import { useDispatch } from 'react-redux';
 
 function Auth(props) {
+  const dispatch = useDispatch()
   const navigate = useNavigate();
   const [inputs, setInputs] = useState({
     name: "", email: "", password: ""
@@ -41,6 +43,7 @@ function Auth(props) {
 
   function handleSubmit(e) {
     e.preventDefault();
+    dispatch(login(inputs));
     console.log(inputs);
     if (isSignup) {
       sendRequest("signup")
@@ -56,7 +59,6 @@ function Auth(props) {
         .catch(err => "there is some mistake in login");
     }
   }
-
 
 
   return (
