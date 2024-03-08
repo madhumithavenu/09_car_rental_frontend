@@ -2,6 +2,8 @@ import { Box, Button, TextField, Typography } from '@mui/material'
 import axios from 'axios';
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import LoginOutlinedIcon from '@mui/icons-material/LoginOutlined';
+import HowToRegOutlinedIcon from '@mui/icons-material/HowToRegOutlined';
 
 function Auth(props) {
   const navigate = useNavigate();
@@ -24,7 +26,7 @@ function Auth(props) {
       password: inputs.password
     }).catch(err => {
       if (err.response.request.status === 404) {
-        alert("User DOes not exist");
+        alert("User Does not exist");
         props.setIsLoggedIn(false);
       }
       else if (err.response.request.status === 400) {
@@ -70,16 +72,21 @@ function Auth(props) {
           padding={3}
           margin={'auto'}
           marginTop={5}
-          borderRadius={5}>
+          borderRadius={5}
+          sx={{ ":hover": { boxShadow: '10px 10px 20px #ccc' } }}
+          >
           <Typography variant='h2' padding={3} textAlign={'center'}>
             {isSignup ? "Sign Up" : "Login"}
           </Typography>
 
-          {isSignup && <TextField name='name' onChange={handleChange} value={inputs.name} placeholder='Name' margin='normal' />}
-          <TextField name='email' onChange={handleChange} value={inputs.email} type={'email'} placeholder='Email' margin='normal' />
-          <TextField name='password' onChange={handleChange} value={inputs.password} type={'password'} placeholder='Password' margin='normal' />
-          <Button type='submit' variant='contained' sx={{ borderRadius: 3, marginTop: 3 }} color='warning'>Submit</Button>
-          <Button onClick={() => setIsSignup(!isSignup)} sx={{ borderRadius: 3, marginTop: 3 }}>
+          {isSignup && <TextField  margin='normal' fullWidth name='name' type={'text'} variant='outlined' onChange={handleChange} value={inputs.name} placeholder='Name' />}
+          <TextField margin='normal' fullWidth name='email' type={'email'} variant='outlined' onChange={handleChange} value={inputs.email} placeholder='Email'/>
+          <TextField margin='normal' fullWidth name='password' type={'password'} variant='outlined' onChange={handleChange} value={inputs.password} placeholder='Password' />
+          <Button endIcon={isSignup ? <HowToRegOutlinedIcon /> : <LoginOutlinedIcon />}
+          type='submit' variant='contained' sx={{ borderRadius: 3, marginTop: 3 }} color='warning'>
+            {isSignup ? 'Register' : 'Login'}
+          </Button>
+          <Button onClick={() => setIsSignup(!isSignup)}  endIcon={isSignup ? <LoginOutlinedIcon /> : <HowToRegOutlinedIcon />} sx={{ borderRadius: 3, marginTop: 3 }}>
             Change To {isSignup ? "Login" : "Signup"}
           </Button>
         </Box>
